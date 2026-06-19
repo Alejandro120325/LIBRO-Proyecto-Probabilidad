@@ -1,0 +1,169 @@
+.aurora-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+            radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.2), transparent 28%),
+            radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.2), transparent 30%),
+            radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.14), transparent 35%),
+            #020617;
+    overflow: hidden;
+}
+
+.aurora-bg::before,
+.aurora-bg::after {
+    content: "";
+    position: absolute;
+    width: 55rem;
+    height: 55rem;
+    border-radius: 999px;
+    filter: blur(90px);
+    opacity: 0.35;
+    animation: auroraMove 13s ease-in-out infinite alternate;
+}
+
+.aurora-bg::before {
+    left: -12rem;
+    top: -12rem;
+    background: rgba(34, 211, 238, 0.45);
+}
+
+.aurora-bg::after {
+    right: -14rem;
+    bottom: -12rem;
+    background: rgba(168, 85, 247, 0.45);
+    animation-delay: 2s;
+}
+
+@keyframes auroraMove {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(4rem, 3rem, 0) scale(1.1);
+    }
+}
+
+.book-scene {
+    perspective: 1200px;
+    width: 310px;
+    height: 430px;
+}
+
+.interactive-book {
+    position: relative;
+    width: 310px;
+    height: 430px;
+    transform-style: preserve-3d;
+    animation: bookFloat 4s ease-in-out infinite;
+}
+
+.book-front {
+    position: absolute;
+    inset: 0;
+    border-radius: 28px 18px 18px 28px;
+    background:
+            linear-gradient(135deg, rgba(14, 165, 233, 0.95), rgba(30, 41, 59, 0.98)),
+            radial-gradient(circle at top, rgba(255, 255, 255, 0.3), transparent);
+    box-shadow:
+            0 35px 80px rgba(0, 0, 0, 0.45),
+            inset 18px 0 20px rgba(15, 23, 42, 0.25),
+            inset -5px 0 15px rgba(255, 255, 255, 0.12);
+    transform: rotateY(-22deg);
+    transform-origin: left center;
+    padding: 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.book-front h2 {
+    font-size: 2rem;
+    line-height: 1.05;
+    font-weight: 950;
+    color: white;
+}
+
+.book-front p {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.book-front span {
+    font-size: 4rem;
+}
+
+.book-label {
+    align-self: flex-start;
+    border-radius: 999px;
+    padding: 0.6rem 1rem;
+    background: rgba(2, 6, 23, 0.45);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+}
+
+.book-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.book-side {
+    position: absolute;
+    top: 18px;
+    right: -25px;
+    width: 55px;
+    height: 395px;
+    border-radius: 0 18px 18px 0;
+    background: linear-gradient(90deg, #0f172a, #334155, #94a3b8);
+    transform: rotateY(68deg);
+    transform-origin: left center;
+}
+
+@keyframes bookFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotateZ(-2deg);
+    }
+
+    50% {
+        transform: translateY(-16px) rotateZ(2deg);
+    }
+}
+
+.shine-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.shine-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    animation: shine 2.8s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -120%;
+    }
+
+    55% {
+        left: 130%;
+    }
+
+    100% {
+        left: 130%;
+    }
+}
