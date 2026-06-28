@@ -1,0 +1,103 @@
+export const chapters = [
+  {
+    id: 1,
+    title: "Regla de Bayes",
+    shortTitle: "Bayes",
+    subtitle: "Convierte evidencia nueva en decisiones mejor informadas.",
+    category: "Probabilidad condicional",
+    game: "Detective Bayesiano",
+    theme: "cyan",
+    definition: "La Regla de Bayes calcula la probabilidad de una causa o hipótesis después de observar una evidencia.",
+    explanation: "Partimos de una probabilidad inicial P(A), medimos qué tan compatible es la evidencia B con A y actualizamos nuestra estimación. Es una forma matemática de aprender con nueva información.",
+    serves: "Sirve para invertir una probabilidad condicional: pasar de saber qué tan probable es una evidencia dada una causa, a estimar la causa dada la evidencia.",
+    formulas: [
+      { label: "Regla de Bayes", expression: "P(A|B) = [P(B|A) · P(A)] / P(B)", note: "Probabilidad posterior = evidencia compatible × probabilidad previa / evidencia total." },
+      { label: "Probabilidad total", expression: "P(B) = P(B|A) · P(A) + P(B|Aᶜ) · P(Aᶜ)", note: "Considera todos los caminos posibles que pueden producir B." },
+    ],
+    example: {
+      title: "Una prueba médica positiva",
+      description: "Una enfermedad afecta al 2% de la población. La prueba acierta en enfermos el 95% de las veces y da un falso positivo al 4% de personas sanas.",
+      steps: [
+        "Definimos A: tener la enfermedad; B: obtener positivo.",
+        "Datos: P(A)=0,02; P(B|A)=0,95; P(Aᶜ)=0,98; P(B|Aᶜ)=0,04.",
+        "P(B)=(0,95×0,02)+(0,04×0,98)=0,0582.",
+        "P(A|B)=0,019/0,0582=0,3265.",
+      ],
+      result: "Aunque la prueba fue positiva, la probabilidad real de enfermedad es 32,65%.",
+    },
+    applications: ["Diagnósticos médicos", "Filtros de spam", "Predicción de riesgos"],
+    summary: "Bayes combina una creencia previa con evidencia observable. El denominador debe incluir todas las formas en que la evidencia puede ocurrir.",
+    videoTitle: "Video: intuición detrás de Bayes",
+  },
+  {
+    id: 2,
+    title: "Media, mediana y moda",
+    shortTitle: "Estadística",
+    subtitle: "Resume conjuntos de datos y descubre su valor representativo.",
+    category: "Estadística básica",
+    game: "Reto de Datos",
+    theme: "emerald",
+    definition: "La media, la mediana y la moda son medidas de tendencia central: describen alrededor de qué valor se concentra un conjunto de datos.",
+    explanation: "La media usa todos los valores; la mediana busca el centro una vez ordenados; y la moda identifica lo que más se repite. Elegir la medida adecuada evita conclusiones engañosas.",
+    serves: "Sirven para comparar grupos, resumir mucha información y comunicar patrones con una sola cifra.",
+    formulas: [
+      { label: "Media aritmética", expression: "x̄ = (x₁ + x₂ + ··· + xₙ) / n", note: "Suma todos los datos y divide entre la cantidad de observaciones." },
+      { label: "Mediana", expression: "Me = valor central de los datos ordenados", note: "Si n es par, promedia los dos valores centrales." },
+      { label: "Moda", expression: "Mo = dato con mayor frecuencia", note: "Puede no existir o haber más de una moda." },
+    ],
+    example: {
+      title: "Resultados de una práctica",
+      description: "Analizamos los datos ordenados: 4, 7, 7, 9, 10, 13.",
+      data: [4, 7, 7, 9, 10, 13],
+      steps: [
+        "Media: (4+7+7+9+10+13)/6 = 50/6 = 8,33.",
+        "Mediana: los valores centrales son 7 y 9; (7+9)/2 = 8.",
+        "Moda: 7 aparece dos veces y los demás una vez.",
+      ],
+      result: "Media = 8,33 · Mediana = 8 · Moda = 7.",
+    },
+    applications: ["Promedios académicos", "Ventas", "Encuestas", "Análisis deportivo"],
+    summary: "Ordena los datos antes de buscar la mediana. Usa la mediana cuando valores extremos puedan distorsionar la media.",
+    videoTitle: "Video: medidas de tendencia central",
+  },
+  {
+    id: 3,
+    title: "Variables aleatorias",
+    shortTitle: "Variables",
+    subtitle: "Modela resultados inciertos con valores y probabilidades.",
+    category: "Distribuciones",
+    game: "Laboratorio Aleatorio",
+    theme: "violet",
+    definition: "Una variable aleatoria asigna un valor numérico a cada resultado posible de un experimento aleatorio.",
+    explanation: "Una variable discreta toma valores contables, como el número de caras. Una continua puede tomar cualquier valor de un intervalo, como el tiempo o la estatura.",
+    serves: "Sirve para construir distribuciones, calcular resultados promedio esperados y medir cuánto pueden variar los resultados.",
+    formulas: [
+      { label: "Función de probabilidad", expression: "P(X=x) ≥ 0  y  ΣP(X=x) = 1", note: "Asigna probabilidad a cada valor posible de una variable discreta." },
+      { label: "Valor esperado", expression: "E(X) = Σ x · P(x)", note: "Es el promedio teórico después de repetir muchas veces el experimento." },
+      { label: "Varianza", expression: "Var(X) = E(X²) - [E(X)]²", note: "Mide la dispersión de los resultados alrededor del valor esperado." },
+    ],
+    example: {
+      title: "Dos monedas y un dado",
+      description: "Sea X el número de caras al lanzar dos monedas: X puede valer 0, 1 o 2.",
+      distribution: [
+        { value: "X=0", probability: 25 },
+        { value: "X=1", probability: 50 },
+        { value: "X=2", probability: 25 },
+      ],
+      steps: [
+        "Espacio muestral: CC, CS, SC, SS, todos igualmente probables.",
+        "P(X=0)=1/4; P(X=1)=2/4; P(X=2)=1/4.",
+        "E(X)=0(1/4)+1(2/4)+2(1/4)=1 cara.",
+        "Para un dado justo: E(X)=(1+2+3+4+5+6)/6=3,5.",
+      ],
+      result: "El valor esperado no tiene que ser un resultado posible; representa el promedio a largo plazo.",
+    },
+    applications: ["Seguros y riesgo", "Control de calidad", "Finanzas", "Pronósticos"],
+    summary: "La distribución conecta cada valor con su probabilidad. La esperanza mide el centro teórico y la varianza, su dispersión.",
+    videoTitle: "Video: de experimentos a distribuciones",
+  },
+];
+
+export function getChapter(unitId) {
+  return chapters.find((chapter) => chapter.id === Number(unitId));
+}
