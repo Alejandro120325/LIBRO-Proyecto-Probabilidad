@@ -9,7 +9,7 @@ export default function ExampleBox({ example }) {
       {example.data && <div className="my-3 flex flex-wrap gap-2">{example.data.map((value, index) => <span key={`${value}-${index}`} className="data-chip">{value}</span>)}</div>}
       {example.distribution && (
         <div className="my-4 flex h-28 items-end gap-3 border-b border-slate-300 px-2">
-          {example.distribution.map((item) => <div key={item.value} className="flex flex-1 flex-col items-center gap-1"><span className="text-[10px] font-bold text-violet-700">{item.probability}%</span><div className="w-full max-w-14 rounded-t bg-violet-500" style={{ height: `${item.probability * 1.3}px` }} /><span className="text-[10px] text-slate-500">{item.value}</span></div>)}
+          {example.distribution.map((item) => <div key={item.value} className="flex flex-1 flex-col items-center gap-1"><span className="text-xs font-bold text-violet-700">{item.probability}%</span><div className="w-full max-w-14 rounded-t bg-violet-500" style={{ height: `${item.probability * 1.3}px` }} /><span className="text-xs text-slate-500">{item.value}</span></div>)}
         </div>
       )}
       <ol className="mt-4 space-y-2">{example.steps.map((step, index) => <li key={step} className="flex gap-2 text-xs leading-5 text-slate-700"><span className="step-number">{index + 1}</span><span>{step}</span></li>)}</ol>

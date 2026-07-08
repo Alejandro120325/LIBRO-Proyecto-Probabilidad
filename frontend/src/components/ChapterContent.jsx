@@ -31,7 +31,7 @@ export default function ChapterContent({ chapter }) {
           <div className="mt-2 flex flex-wrap gap-2">{chapter.applications.map((item) => <span key={item} className="application-chip">{item}</span>)}</div>
         </div>
         <div className="mt-4 rounded-xl border-l-4 border-amber-400 bg-amber-50 p-3">
-          <p className="text-[10px] font-black uppercase tracking-[.16em] text-amber-700">Mini resumen</p>
+          <p className="text-xs font-black uppercase tracking-[.12em] text-amber-700">Mini resumen</p>
           <p className="mt-1 text-xs leading-5 text-amber-950">{chapter.summary}</p>
         </div>
         <div className="mt-4"><VideoBox title={chapter.videoTitle} /></div>

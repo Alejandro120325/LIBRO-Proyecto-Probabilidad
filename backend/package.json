@@ -2,6 +2,7 @@
   "name": "probabilidad-libro-3d-backend",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "API del Libro Interactivo 3D de Probabilidad y Estadística",
   "main": "src/server.js",
   "scripts": {

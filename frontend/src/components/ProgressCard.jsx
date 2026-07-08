@@ -6,7 +6,7 @@ export default function ProgressCard({ label, value, detail, color = "cyan", ico
   };
 
   return (
-    <article className="glass-card flex items-center gap-4 p-5">
+    <article className="glass-card hover-lift soft-border flex items-center gap-4 p-5">
       <div className={`grid size-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br ${colors[color]} text-[#050816] shadow-lg`}>
         <Icon className="size-5" strokeWidth={2.4} />
       </div>

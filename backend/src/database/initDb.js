@@ -20,6 +20,14 @@ export async function initializeDatabase() {
       password_hash TEXT NOT NULL,
       role TEXT NOT NULL DEFAULT 'student' CHECK (role IN ('student', 'admin')),
       status TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active', 'suspended')),
+      phone TEXT,
+      national_id TEXT,
+      city TEXT,
+      university TEXT,
+      career TEXT,
+      semester TEXT,
+      birth_date TEXT,
+      bio TEXT,
       created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
     )
@@ -28,6 +36,14 @@ export async function initializeDatabase() {
   await ensureUserColumn("role", "TEXT NOT NULL DEFAULT 'student' CHECK (role IN ('student', 'admin'))");
   await ensureUserColumn("status", "TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active', 'suspended'))");
   await ensureUserColumn("updated_at", "DATETIME");
+  await ensureUserColumn("phone", "TEXT");
+  await ensureUserColumn("national_id", "TEXT");
+  await ensureUserColumn("city", "TEXT");
+  await ensureUserColumn("university", "TEXT");
+  await ensureUserColumn("career", "TEXT");
+  await ensureUserColumn("semester", "TEXT");
+  await ensureUserColumn("birth_date", "TEXT");
+  await ensureUserColumn("bio", "TEXT");
   await run("UPDATE users SET updated_at = COALESCE(updated_at, created_at, CURRENT_TIMESTAMP)");
 
   await run(`

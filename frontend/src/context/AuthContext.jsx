@@ -36,12 +36,19 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
+  const updateProfile = async (profile) => {
+    const data = await authService.updateProfile(profile);
+    setUser(data.user);
+    return data;
+  };
+
   const value = useMemo(() => ({
     user,
     loading,
     isAuthenticated: Boolean(user),
     login: (credentials) => authenticate("login", credentials),
     register: (credentials) => authenticate("register", credentials),
+    updateProfile,
     logout,
   }), [user, loading]);
 

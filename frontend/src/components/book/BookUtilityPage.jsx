@@ -1,10 +1,12 @@
 import { BarChart3, BookOpenCheck, Sparkles, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function BookUtilityPage({ type }) {
   const { user } = useAuth();
-  if (type === "epilogue") return <div className="epilogue-page"><Sparkles /><p className="book-label">Fin de la primera travesía</p><h1>Epílogo</h1><p>Las probabilidades no predicen el futuro con certeza; nos enseñan a razonar mejor frente a la incertidumbre. Regresa a cualquier capítulo, practica y supera tu propia marca.</p><BookOpenCheck /><blockquote>El conocimiento crece cada vez que vuelves a abrir el libro.</blockquote></div>;
+  const { t } = useLanguage();
+  if (type === "epilogue") return <div className="epilogue-page"><Sparkles /><p className="book-label">{t("book.endJourney")}</p><h1>{t("book.epilogue")}</h1><p>{t("book.epilogueText")}</p><BookOpenCheck /><blockquote>{t("book.epilogueQuote")}</blockquote></div>;
 
   const admin = user?.role === "admin";
   const results = type === "results";
@@ -15,10 +17,10 @@ export default function BookUtilityPage({ type }) {
   return (
     <div className="utility-book-page">
       <Icon />
-      <p className="book-label">{results ? "Tu recorrido" : "Comunidad de aprendizaje"}</p>
-      <h1>{results ? "Resultados" : "Ranking"}</h1>
-      <p>{results ? "Consulta tus intentos, promedio general y mejores resultados por unidad." : "Descubre las mejores puntuaciones y compara tu avance con otros estudiantes."}</p>
-      <Link to={path} className="book-game-button">Abrir {results ? "mis resultados" : "ranking completo"}</Link>
+      <p className="book-label">{results ? t("dashboard.journey") : t("book.community")}</p>
+      <h1>{results ? t("common.results") : t("common.ranking")}</h1>
+      <p>{results ? t("book.resultsText") : t("book.rankingText")}</p>
+      <Link to={path} className="book-game-button">{results ? t("book.openResults") : t("book.openRanking")}</Link>
     </div>
   );
 }

@@ -1,23 +1,26 @@
 import { BarChart3, BookOpen, LayoutDashboard, LogOut, Trophy } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
+import { useLanguage } from "../context/LanguageContext.jsx";
+import HeaderPreferences from "./HeaderPreferences.jsx";
 
 const studentLinks = [
-  { to: "/dashboard", label: "Inicio", icon: LayoutDashboard },
-  { to: "/book", label: "Libro", icon: BookOpen },
-  { to: "/my-results", label: "Resultados", icon: BarChart3 },
-  { to: "/leaderboard", label: "Ranking", icon: Trophy },
+  { to: "/dashboard", label: "header.home", icon: LayoutDashboard },
+  { to: "/book", label: "header.book", icon: BookOpen },
+  { to: "/my-results", label: "header.myResults", icon: BarChart3 },
+  { to: "/leaderboard", label: "common.ranking", icon: Trophy },
 ];
 
 const adminLinks = [
-  { to: "/admin", label: "Administración", icon: LayoutDashboard },
-  { to: "/book", label: "Libro", icon: BookOpen },
-  { to: "/admin/results", label: "Resultados", icon: BarChart3 },
-  { to: "/admin/leaderboard", label: "Ranking", icon: Trophy },
+  { to: "/admin", label: "common.administration", icon: LayoutDashboard },
+  { to: "/book", label: "header.book", icon: BookOpen },
+  { to: "/admin/results", label: "common.results", icon: BarChart3 },
+  { to: "/admin/leaderboard", label: "common.ranking", icon: Trophy },
 ];
 
 export default function Navbar() {
   const { user, logout } = useAuth();
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const links = user?.role === "admin" ? adminLinks : studentLinks;
 
@@ -34,12 +37,12 @@ export default function Navbar() {
             <BookOpen className="size-5" strokeWidth={2.4} />
           </span>
           <span className="hidden sm:block">
-            <strong className="block text-sm tracking-tight text-white">Probabilidad 3D</strong>
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-300">Crónica interactiva</span>
+            <strong className="block text-sm tracking-tight text-white">{t("header.project")}</strong>
+            <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-amber-300">{t("header.subtitle")}</span>
           </span>
         </NavLink>
 
-        <nav className="flex items-center gap-1 rounded-2xl border border-white/8 bg-white/[0.035] p-1" aria-label="Navegación principal">
+        <nav className="flex items-center gap-1 rounded-2xl border border-white/8 bg-white/[0.035] p-1" aria-label={t("header.mainNav")}>
           {links.map(({ to, label, icon: Icon }) => (
             <NavLink
               key={to}
@@ -47,7 +50,7 @@ export default function Navbar() {
               className={({ isActive }) => `nav-link ${isActive ? "nav-link-active" : ""}`}
             >
               <Icon className="size-4" aria-hidden="true" />
-              <span className="hidden md:inline">{label}</span>
+              <span className="hidden md:inline">{t(label)}</span>
             </NavLink>
           ))}
         </nav>
@@ -55,9 +58,10 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <div className="hidden text-right lg:block">
             <p className="max-w-36 truncate text-xs font-bold text-white">{user?.name}</p>
-            <p className="text-[10px] text-slate-500">Sesión activa</p>
+            <p className="text-xs text-slate-500">{t("header.session")}</p>
           </div>
-          <button onClick={handleLogout} className="icon-button" aria-label="Cerrar sesión" title="Cerrar sesión">
+          <HeaderPreferences />
+          <button onClick={handleLogout} className="icon-button" aria-label={t("common.logout")} title={t("common.logout")}>
             <LogOut className="size-4" />
           </button>
         </div>

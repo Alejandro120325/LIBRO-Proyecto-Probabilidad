@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import AppFooter from "../components/AppFooter.jsx";
 import Navbar from "../components/Navbar.jsx";
 
 export default function AppLayout() {
@@ -10,6 +11,7 @@ export default function AppLayout() {
       <main className="relative z-10 mx-auto w-full max-w-[1440px] px-4 pb-12 pt-24 sm:px-6 lg:px-8">
         <Outlet />
       </main>
+      <AppFooter />
     </div>
   );
 }

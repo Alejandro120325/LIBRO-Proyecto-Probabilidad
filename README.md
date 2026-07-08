@@ -1,6 +1,6 @@
 # Libro Interactivo 3D de Probabilidad y Estadística
 
-Plataforma educativa full-stack con estética de libro antiguo de fantasía, contenidos interactivos, minijuegos, progreso persistente y un dashboard administrativo para gestionar usuarios, resultados, rankings y bitácora.
+Plataforma educativa full-stack con una interfaz editorial seria, libro 3D interactivo, minijuegos, progreso persistente y dashboard administrativo para gestionar usuarios, resultados, rankings y bitácora.
 
 **Autores:**
 
@@ -13,7 +13,8 @@ Plataforma educativa full-stack con estética de libro antiguo de fantasía, con
 - Frontend: React, Vite, Tailwind CSS, React Router DOM, Axios y Lucide React.
 - Backend: Node.js, Express, SQLite, JWT y bcryptjs.
 - Seguridad: contraseñas cifradas, rutas protegidas, roles `student`/`admin` y estados `active`/`suspended`.
-- Diseño: responsive, animaciones CSS 3D, cuero, filigrana dorada y páginas tipo pergamino.
+- Diseño: responsive, animaciones CSS 3D sobrias, cubierta de cuero, páginas editoriales, cinco paletas persistentes y modos claro/oscuro.
+- Accesibilidad y localización: interfaz completa en español latinoamericano e inglés, con preferencias persistentes.
 
 ## Instalación y ejecución
 
@@ -63,6 +64,10 @@ Después del login:
 
 La ruta `/` presenta el libro cerrado. Sin sesión, intentar abrirlo muestra un modal con acceso a login y registro. Con una sesión válida, el botón abre la experiencia 3D.
 
+Todas las vistas incluyen un selector de apariencia flotante con cinco paletas profesionales: Clásico Dorado, Azul Ejecutivo, Verde Pizarra, Borgoña Académico y Grafito Premium. La selección se guarda en `localStorage` bajo la clave `appTheme` y modifica fondos, acentos, cubierta, papel, formularios, tarjetas y tablas.
+
+El encabezado incorpora modo claro/oscuro e idioma ES/EN mediante un botón compacto con bandera. Estas preferencias se guardan en `appColorMode` y `appLanguage`. El modo claro usa una estética beige tipo papel académico. El footer presenta descripción, integrantes, universidad, carrera, materia, contacto y enlaces externos a GitHub, LinkedIn e Instagram con apertura segura en una pestaña nueva.
+
 El libro contiene 18 páginas organizadas en:
 
 1. Portada interna con autores.
@@ -71,7 +76,7 @@ El libro contiene 18 páginas organizadas en:
 4. Cuatro páginas por unidad: introducción, fórmulas, video y ejercicio/minijuego.
 5. Resultados, ranking y epílogo.
 
-Los marcadores laterales permiten saltar a Portada, Índice, U1, U2, U3, Juegos y Resultados. En laptop se muestran dos páginas; en móvil se presenta una página vertical.
+Los marcadores laterales permiten saltar a Portada, Índice, U1, U2, U3, Juegos y Resultados. En laptop se muestran dos páginas; en móvil se presenta una página vertical. Las páginas avanzan con los controles inferiores, arrastre horizontal del mouse o gesto swipe táctil.
 
 ## Rutas principales
 
@@ -146,6 +151,8 @@ Todas requieren JWT de un usuario con rol `admin`.
 3. Desde la navegación superior puedes gestionar usuarios, resultados, ranking y bitácora.
 4. Suspender, eliminar o cambiar un rol requiere confirmación.
 5. El administrador no puede suspenderse, quitarse el rol ni eliminarse a sí mismo.
+
+Las páginas `/admin/users` y `/admin/results` muestran estados explícitos de carga, error y ausencia de datos. Si la API no está disponible o la sesión expiró, se presenta un mensaje con botón **Reintentar** en lugar de una vista vacía.
 
 ## SQLite
 

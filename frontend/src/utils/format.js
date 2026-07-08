@@ -1,7 +1,8 @@
 export function formatDate(value) {
   if (!value) return "—";
   const normalized = value.includes("T") ? value : `${value.replace(" ", "T")}Z`;
-  return new Intl.DateTimeFormat("es-EC", { dateStyle: "medium", timeStyle: "short" }).format(new Date(normalized));
+  const locale = typeof document !== "undefined" && document.documentElement.lang === "en" ? "en-US" : "es-EC";
+  return new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short" }).format(new Date(normalized));
 }
 
 export function formatTime(totalSeconds) {

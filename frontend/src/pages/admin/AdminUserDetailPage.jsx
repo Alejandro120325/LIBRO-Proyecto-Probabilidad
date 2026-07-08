@@ -10,10 +10,12 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { adminService } from "../../services/adminService.js";
 import { getApiErrorMessage } from "../../services/api.js";
 import { formatDate } from "../../utils/format.js";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function AdminUserDetailPage() {
   const { id } = useParams();
   const { user: currentUser } = useAuth();
+  const { t } = useLanguage();
   const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [edit, setEdit] = useState(false);
@@ -24,7 +26,7 @@ export default function AdminUserDetailPage() {
   useEffect(load, [id]);
 
   const save = async (form, roleChanged) => {
-    if (roleChanged && !window.confirm("Cambiar el rol modifica permisos críticos. ¿Continuar?")) return;
+    if (roleChanged && !window.confirm(t("adminUsers.confirmRole"))) return;
     setBusy(true); try { const result = await adminService.updateUser(id, form); setMessage({ type: "success", text: result.message }); setEdit(false); await load(); } catch (error) { setMessage({ type: "error", text: getApiErrorMessage(error) }); } finally { setBusy(false); }
   };
   const act = async () => {
@@ -36,19 +38,19 @@ export default function AdminUserDetailPage() {
     } catch (error) { setMessage({ type: "error", text: getApiErrorMessage(error) }); }
     finally { setBusy(false); }
   };
-  if (!data && !message) return <Loading label="Abriendo expediente" />;
+  if (!data && !message) return <Loading label={t("adminUsers.opening")} />;
   const user = data?.user;
   return (
     <div className="page-enter space-y-6">
-      <Link to="/admin/users" className="back-link"><ArrowLeft />Volver a usuarios</Link>
+      <Link to="/admin/users" className="back-link"><ArrowLeft />{t("adminUsers.back")}</Link>
       {message && <Alert type={message.type} onClose={() => setMessage(null)}>{message.text}</Alert>}
       {user && <>
-        <section className="user-profile-card"><div className="profile-seal">{user.name.charAt(0)}</div><div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-2"><span className={`role-badge role-${user.role}`}>{user.role}</span><span className={`status-badge status-${user.status}`}>{user.status}</span></div><h1>{user.name}</h1><div className="profile-meta"><span><Mail />{user.email}</span><span><CalendarDays />Registrado {formatDate(user.createdAt)}</span></div></div><div className="profile-actions"><button onClick={() => setEdit(true)} className="button button-outline"><Pencil />Editar</button>{user.id !== currentUser.id && <>{user.status === "active" ? <button onClick={() => setConfirm("suspend")} className="button button-ghost"><ShieldOff />Suspender</button> : <button onClick={() => setConfirm("activate")} className="button button-ghost"><ShieldCheck />Activar</button>}<button onClick={() => setConfirm("delete")} className="button button-danger"><Trash2 />Eliminar</button></>}</div></section>
-        <section className="grid gap-4 sm:grid-cols-3"><div className="profile-metric"><span>Promedio</span><strong>{Math.round(user.averagePercentage)}%</strong></div><div className="profile-metric"><span>Mejor resultado</span><strong>{Math.round(user.bestPercentage)}%</strong></div><div className="profile-metric"><span>Juegos completados</span><strong>{user.completedGames}</strong></div></section>
-        <section><div className="admin-panel-heading"><div><p>Progreso académico</p><h2>Historial de resultados</h2></div></div>{data.results.length ? <div className="grid gap-3 lg:grid-cols-2">{data.results.map((result) => <ResultCard key={result.id} result={result} />)}</div> : <div className="admin-empty"><UserRound /> Este usuario aún no tiene resultados.</div>}</section>
+        <section className="user-profile-card"><div className="profile-seal">{user.name.charAt(0)}</div><div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-2"><span className={`role-badge role-${user.role}`}>{user.role === "admin" ? t("common.admin") : t("common.student")}</span><span className={`status-badge status-${user.status}`}>{user.status === "active" ? t("common.active") : t("common.suspended")}</span></div><h1>{user.name}</h1><div className="profile-meta"><span><Mail />{user.email}</span><span><CalendarDays />{t("adminUsers.registered")} {formatDate(user.createdAt)}</span></div></div><div className="profile-actions"><button onClick={() => setEdit(true)} className="button button-outline"><Pencil />{t("common.edit")}</button>{user.id !== currentUser.id && <>{user.status === "active" ? <button onClick={() => setConfirm("suspend")} className="button button-ghost"><ShieldOff />{t("common.suspend")}</button> : <button onClick={() => setConfirm("activate")} className="button button-ghost"><ShieldCheck />{t("common.activate")}</button>}<button onClick={() => setConfirm("delete")} className="button button-danger"><Trash2 />{t("common.delete")}</button></>}</div></section>
+        <section className="grid gap-4 sm:grid-cols-3"><div className="profile-metric"><span>{t("dashboard.average")}</span><strong>{Math.round(user.averagePercentage)}%</strong></div><div className="profile-metric"><span>{t("dashboard.best")}</span><strong>{Math.round(user.bestPercentage)}%</strong></div><div className="profile-metric"><span>{t("dashboard.gamesDone", { count: user.completedGames })}</span><strong>{user.completedGames}</strong></div></section>
+        <section><div className="admin-panel-heading"><div><p>{t("adminUsers.academicProgress")}</p><h2>{t("adminUsers.resultHistory")}</h2></div></div>{data.results.length ? <div className="grid gap-3 lg:grid-cols-2">{data.results.map((result) => <ResultCard key={result.id} result={result} />)}</div> : <div className="admin-empty"><UserRound /> {t("adminUsers.noResults")}</div>}</section>
       </>}
       <UserEditModal user={edit ? user : null} busy={busy} onClose={() => setEdit(false)} onSave={save} />
-      <ConfirmModal open={Boolean(confirm)} busy={busy} danger={confirm !== "activate"} title={confirm === "delete" ? "Eliminar usuario" : confirm === "suspend" ? "Suspender usuario" : "Activar usuario"} message={user ? `Confirma la acción sobre ${user.email}.` : ""} confirmText={confirm === "delete" ? "Eliminar" : confirm === "suspend" ? "Suspender" : "Activar"} onClose={() => setConfirm(null)} onConfirm={act} />
+      <ConfirmModal open={Boolean(confirm)} busy={busy} danger={confirm !== "activate"} title={confirm === "delete" ? t("adminUsers.deleteTitle") : confirm === "suspend" ? t("adminUsers.suspendTitle") : t("adminUsers.activateTitle")} message={user ? t("adminUsers.confirmAction", { email: user.email }) : ""} confirmText={confirm === "delete" ? t("common.delete") : confirm === "suspend" ? t("common.suspend") : t("common.activate")} onClose={() => setConfirm(null)} onConfirm={act} />
     </div>
   );
 }

@@ -13,7 +13,9 @@ export async function authMiddleware(request, response, next) {
 
     const payload = jwt.verify(token, env.jwtSecret);
     const user = await get(
-      "SELECT id, name, email, role, status, created_at, updated_at FROM users WHERE id = ?",
+      `SELECT id, name, email, role, status, phone, national_id, city,
+        university, career, semester, birth_date, bio, created_at, updated_at
+       FROM users WHERE id = ?`,
       [payload.id || payload.userId],
     );
 
