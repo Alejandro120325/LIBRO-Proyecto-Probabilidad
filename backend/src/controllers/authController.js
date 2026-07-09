@@ -83,7 +83,8 @@ export async function login(request, response) {
   }
 
   const user = await get("SELECT * FROM users WHERE email = ?", [email]);
-  const isValid = user ? await bcrypt.compare(password, user.password_hash) : false;
+  const hasPasswordHash = typeof user?.password_hash === "string" && user.password_hash.length > 0;
+  const isValid = hasPasswordHash ? await bcrypt.compare(password, user.password_hash) : false;
   if (!isValid) {
     await createAuditLog({
       userId: user?.id || null,
@@ -140,6 +141,10 @@ function optionalText(value, maxLength) {
   return normalized ? normalized.slice(0, maxLength) : null;
 }
 
+function profileValue(body, input, column) {
+  return body[input] ?? body[column];
+}
+
 function isValidIsoDate(value) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
   const [year, month, day] = value.split("-").map(Number);
@@ -154,12 +159,12 @@ export async function updateProfile(request, response) {
   }
 
   const fieldLabels = { phone: "teléfono", nationalId: "cédula", city: "ciudad", university: "universidad", career: "carrera", semester: "semestre", birthDate: "fecha de nacimiento", bio: "biografía" };
-  for (const [input, , max] of profileFields) {
-    if (String(request.body[input] || "").trim().length > max) {
+  for (const [input, column, max] of profileFields) {
+    if (String(profileValue(request.body, input, column) || "").trim().length > max) {
       return response.status(400).json({ message: `El campo ${fieldLabels[input]} admite máximo ${max} caracteres.` });
     }
   }
-  const profile = Object.fromEntries(profileFields.map(([input, column, max]) => [column, optionalText(request.body[input], max)]));
+  const profile = Object.fromEntries(profileFields.map(([input, column, max]) => [column, optionalText(profileValue(request.body, input, column), max)]));
   if (profile.phone && profile.phone.length < 7) {
     return response.status(400).json({ message: "El teléfono debe tener al menos 7 caracteres." });
   }

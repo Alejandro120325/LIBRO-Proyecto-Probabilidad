@@ -66,7 +66,6 @@ export async function getDashboard(request, response) {
       FROM users ORDER BY datetime(created_at) DESC, id DESC LIMIT 5
   `);
   const latestResults = await all(`${resultSelect} ORDER BY datetime(r.created_at) DESC, r.id DESC LIMIT 5`);
-  const latestAuditLogs = await all(`${auditSelect} ORDER BY datetime(a.created_at) DESC, a.id DESC LIMIT 8`);
 
   await createAuditLog({
     userId: request.user.id,
@@ -75,6 +74,7 @@ export async function getDashboard(request, response) {
     description: "Acceso al dashboard administrativo.",
     ipAddress: request.ip,
   });
+  const latestAuditLogs = await all(`${auditSelect} ORDER BY datetime(a.created_at) DESC, a.id DESC LIMIT 8`);
 
   return response.json({
     dashboard: {

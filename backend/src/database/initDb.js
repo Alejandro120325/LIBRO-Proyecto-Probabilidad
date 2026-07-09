@@ -1,10 +1,10 @@
 import bcrypt from "bcryptjs";
 import { all, get, run } from "./db.js";
 
-async function ensureUserColumn(name, definition) {
-  const columns = await all("PRAGMA table_info(users)");
+async function ensureColumn(table, name, definition) {
+  const columns = await all(`PRAGMA table_info(${table})`);
   if (!columns.some((column) => column.name === name)) {
-    await run(`ALTER TABLE users ADD COLUMN ${name} ${definition}`);
+    await run(`ALTER TABLE ${table} ADD COLUMN ${name} ${definition}`);
   }
 }
 
@@ -33,17 +33,21 @@ export async function initializeDatabase() {
     )
   `);
 
-  await ensureUserColumn("role", "TEXT NOT NULL DEFAULT 'student' CHECK (role IN ('student', 'admin'))");
-  await ensureUserColumn("status", "TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active', 'suspended'))");
-  await ensureUserColumn("updated_at", "DATETIME");
-  await ensureUserColumn("phone", "TEXT");
-  await ensureUserColumn("national_id", "TEXT");
-  await ensureUserColumn("city", "TEXT");
-  await ensureUserColumn("university", "TEXT");
-  await ensureUserColumn("career", "TEXT");
-  await ensureUserColumn("semester", "TEXT");
-  await ensureUserColumn("birth_date", "TEXT");
-  await ensureUserColumn("bio", "TEXT");
+  await ensureColumn("users", "name", "TEXT NOT NULL DEFAULT 'Usuario'");
+  await ensureColumn("users", "email", "TEXT");
+  await ensureColumn("users", "password_hash", "TEXT NOT NULL DEFAULT ''");
+  await ensureColumn("users", "role", "TEXT NOT NULL DEFAULT 'student' CHECK (role IN ('student', 'admin'))");
+  await ensureColumn("users", "status", "TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active', 'suspended'))");
+  await ensureColumn("users", "created_at", "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP");
+  await ensureColumn("users", "updated_at", "DATETIME");
+  await ensureColumn("users", "phone", "TEXT");
+  await ensureColumn("users", "national_id", "TEXT");
+  await ensureColumn("users", "city", "TEXT");
+  await ensureColumn("users", "university", "TEXT");
+  await ensureColumn("users", "career", "TEXT");
+  await ensureColumn("users", "semester", "TEXT");
+  await ensureColumn("users", "birth_date", "TEXT");
+  await ensureColumn("users", "bio", "TEXT");
   await run("UPDATE users SET updated_at = COALESCE(updated_at, created_at, CURRENT_TIMESTAMP)");
 
   await run(`
@@ -62,6 +66,15 @@ export async function initializeDatabase() {
     )
   `);
 
+  await ensureColumn("results", "user_id", "INTEGER");
+  await ensureColumn("results", "unit_id", "INTEGER NOT NULL DEFAULT 1 CHECK (unit_id BETWEEN 1 AND 3)");
+  await ensureColumn("results", "topic", "TEXT NOT NULL DEFAULT 'General'");
+  await ensureColumn("results", "game_type", "TEXT NOT NULL DEFAULT 'Juego'");
+  await ensureColumn("results", "score", "INTEGER NOT NULL DEFAULT 0 CHECK (score >= 0)");
+  await ensureColumn("results", "total_questions", "INTEGER NOT NULL DEFAULT 1 CHECK (total_questions > 0)");
+  await ensureColumn("results", "percentage", "REAL NOT NULL DEFAULT 0 CHECK (percentage BETWEEN 0 AND 100)");
+  await ensureColumn("results", "time_seconds", "INTEGER NOT NULL DEFAULT 0 CHECK (time_seconds >= 0)");
+  await ensureColumn("results", "created_at", "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP");
   await run("CREATE INDEX IF NOT EXISTS idx_results_user_id ON results(user_id)");
   await run("CREATE INDEX IF NOT EXISTS idx_results_unit_id ON results(unit_id)");
 
@@ -78,6 +91,13 @@ export async function initializeDatabase() {
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
     )
   `);
+  await ensureColumn("audit_logs", "user_id", "INTEGER");
+  await ensureColumn("audit_logs", "action", "TEXT NOT NULL DEFAULT 'UNKNOWN'");
+  await ensureColumn("audit_logs", "entity", "TEXT NOT NULL DEFAULT 'system'");
+  await ensureColumn("audit_logs", "entity_id", "INTEGER");
+  await ensureColumn("audit_logs", "description", "TEXT NOT NULL DEFAULT ''");
+  await ensureColumn("audit_logs", "ip_address", "TEXT");
+  await ensureColumn("audit_logs", "created_at", "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP");
   await run("CREATE INDEX IF NOT EXISTS idx_audit_logs_user_id ON audit_logs(user_id)");
   await run("CREATE INDEX IF NOT EXISTS idx_audit_logs_action ON audit_logs(action)");
   await run("CREATE INDEX IF NOT EXISTS idx_audit_logs_created_at ON audit_logs(created_at)");

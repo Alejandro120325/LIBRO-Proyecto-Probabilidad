@@ -16,12 +16,13 @@ function normalizeResult(row) {
 }
 
 export async function saveResult(request, response) {
-  const unitId = Number(request.body.unitId);
+  const unitId = Number(request.body.unitId ?? request.body.unit_id);
   const topic = String(request.body.topic || "").trim();
-  const gameType = String(request.body.gameType || "").trim();
+  const gameType = String(request.body.gameType ?? request.body.game_type ?? "").trim();
   const score = Number(request.body.score);
-  const totalQuestions = Number(request.body.totalQuestions);
-  const timeSeconds = Math.max(0, Math.round(Number(request.body.timeSeconds) || 0));
+  const totalQuestions = Number(request.body.totalQuestions ?? request.body.total_questions);
+  const rawTimeSeconds = Number(request.body.timeSeconds ?? request.body.time_seconds ?? 0);
+  const timeSeconds = Math.round(rawTimeSeconds);
 
   if (![1, 2, 3].includes(unitId)) {
     return response.status(400).json({ message: "La unidad seleccionada no es válida." });
@@ -31,6 +32,10 @@ export async function saveResult(request, response) {
   }
   if (!Number.isInteger(score) || !Number.isInteger(totalQuestions) || totalQuestions < 1 || score < 0 || score > totalQuestions) {
     return response.status(400).json({ message: "El puntaje recibido no es válido." });
+  }
+
+  if (!Number.isFinite(rawTimeSeconds) || timeSeconds < 0) {
+    return response.status(400).json({ message: "El tiempo recibido no es válido." });
   }
 
   const percentage = Number(((score / totalQuestions) * 100).toFixed(2));
