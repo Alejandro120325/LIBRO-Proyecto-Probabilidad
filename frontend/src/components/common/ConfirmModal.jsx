@@ -1,5 +1,5 @@
 import { AlertTriangle, X } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function ConfirmModal({ open, title, message, confirmText, danger = false, busy = false, onConfirm, onClose }) {
   const { t } = useLanguage();

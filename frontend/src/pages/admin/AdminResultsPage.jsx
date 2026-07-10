@@ -1,10 +1,10 @@
 import { ListChecks, Search, Trash2 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import Alert from "../../components/Alert.jsx";
-import ConfirmModal from "../../components/ConfirmModal.jsx";
-import EmptyState from "../../components/EmptyState.jsx";
-import ErrorState from "../../components/ErrorState.jsx";
-import LoadingState from "../../components/LoadingState.jsx";
+import Alert from "../../components/common/Alert.jsx";
+import ConfirmModal from "../../components/common/ConfirmModal.jsx";
+import EmptyState from "../../components/common/EmptyState.jsx";
+import ErrorState from "../../components/common/ErrorState.jsx";
+import LoadingState from "../../components/common/LoadingState.jsx";
 import { adminService } from "../../services/adminService.js";
 import { getApiErrorMessage } from "../../services/api.js";
 import { formatDate, formatTime } from "../../utils/format.js";

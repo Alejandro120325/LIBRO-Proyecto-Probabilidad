@@ -1,5 +1,5 @@
 import { Github, Instagram, Linkedin } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 const links = [
   { label: "GitHub", href: "https://github.com/Alejandro120325", icon: Github },

@@ -1,6 +1,6 @@
 import { BookMarked, GraduationCap, Mail, MapPin, Phone, Users } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext.jsx";
-import SocialLinks from "./SocialLinks.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
+import SocialLinks from "../common/SocialLinks.jsx";
 
 export default function AppFooter() {
   const { t } = useLanguage();

@@ -1,12 +1,12 @@
 import { Eye, Pencil, Search, ShieldCheck, ShieldOff, Trash2, UserCog, Users } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import Alert from "../../components/Alert.jsx";
-import ConfirmModal from "../../components/ConfirmModal.jsx";
-import EmptyState from "../../components/EmptyState.jsx";
-import ErrorState from "../../components/ErrorState.jsx";
-import LoadingState from "../../components/LoadingState.jsx";
-import UserEditModal from "../../components/UserEditModal.jsx";
+import Alert from "../../components/common/Alert.jsx";
+import ConfirmModal from "../../components/common/ConfirmModal.jsx";
+import EmptyState from "../../components/common/EmptyState.jsx";
+import ErrorState from "../../components/common/ErrorState.jsx";
+import LoadingState from "../../components/common/LoadingState.jsx";
+import UserEditModal from "../../components/dashboard/UserEditModal.jsx";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { adminService } from "../../services/adminService.js";
 import { getApiErrorMessage } from "../../services/api.js";

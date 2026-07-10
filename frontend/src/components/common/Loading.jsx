@@ -1,5 +1,5 @@
 import { LoaderCircle } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function Loading({ fullScreen = false, label }) {
   const { t } = useLanguage();

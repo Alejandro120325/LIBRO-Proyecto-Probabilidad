@@ -1,7 +1,7 @@
 import { Crown, Medal, Trophy } from "lucide-react";
 import { useEffect, useState } from "react";
-import Alert from "../../components/Alert.jsx";
-import Loading from "../../components/Loading.jsx";
+import Alert from "../../components/common/Alert.jsx";
+import Loading from "../../components/common/Loading.jsx";
 import { adminService } from "../../services/adminService.js";
 import { getApiErrorMessage } from "../../services/api.js";
 import { formatDate } from "../../utils/format.js";

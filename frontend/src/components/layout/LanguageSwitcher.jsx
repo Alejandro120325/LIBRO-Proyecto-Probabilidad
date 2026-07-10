@@ -1,4 +1,4 @@
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 function EcuadorFlag() {
   return <svg viewBox="0 0 24 16" role="presentation"><path fill="#FCD116" d="M0 0h24v8H0z"/><path fill="#003893" d="M0 8h24v4H0z"/><path fill="#CE1126" d="M0 12h24v4H0z"/><circle cx="12" cy="8" r="2" fill="#D6A63B" stroke="#704C18" strokeWidth=".5"/></svg>;

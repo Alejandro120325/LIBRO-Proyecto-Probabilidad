@@ -1,11 +1,11 @@
 import { ArrowLeft, CalendarDays, Mail, Pencil, ShieldCheck, ShieldOff, Trash2, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Alert from "../../components/Alert.jsx";
-import ConfirmModal from "../../components/ConfirmModal.jsx";
-import Loading from "../../components/Loading.jsx";
-import ResultCard from "../../components/ResultCard.jsx";
-import UserEditModal from "../../components/UserEditModal.jsx";
+import Alert from "../../components/common/Alert.jsx";
+import ConfirmModal from "../../components/common/ConfirmModal.jsx";
+import Loading from "../../components/common/Loading.jsx";
+import ResultCard from "../../components/dashboard/ResultCard.jsx";
+import UserEditModal from "../../components/dashboard/UserEditModal.jsx";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { adminService } from "../../services/adminService.js";
 import { getApiErrorMessage } from "../../services/api.js";

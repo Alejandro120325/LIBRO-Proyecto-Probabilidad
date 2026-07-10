@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
-import { useBookAccessibility } from "../context/BookAccessibilityContext.jsx";
-import BookFontSizeControls from "./book/BookFontSizeControls.jsx";
+import { useBookAccessibility } from "../../context/BookAccessibilityContext.jsx";
+import BookFontSizeControls from "../book/BookFontSizeControls.jsx";
 import ColorModeToggle from "./ColorModeToggle.jsx";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
 

@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import ProtectedRoute from "./components/ProtectedRoute.jsx";
-import RoleRoute from "./components/RoleRoute.jsx";
-import ThemeSwitcher from "./components/ThemeSwitcher.jsx";
+import ProtectedRoute from "./components/common/ProtectedRoute.jsx";
+import RoleRoute from "./components/common/RoleRoute.jsx";
+import ThemeSwitcher from "./components/layout/ThemeSwitcher.jsx";
 import { BookAccessibilityProvider } from "./context/BookAccessibilityContext.jsx";
 import AdminLayout from "./layouts/AdminLayout.jsx";
 import AppLayout from "./layouts/AppLayout.jsx";

@@ -1,8 +1,8 @@
 import { Crown, Medal, Trophy, UserRound } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import EmptyState from "../components/EmptyState.jsx";
-import ErrorState from "../components/ErrorState.jsx";
-import LoadingState from "../components/LoadingState.jsx";
+import EmptyState from "../components/common/EmptyState.jsx";
+import ErrorState from "../components/common/ErrorState.jsx";
+import LoadingState from "../components/common/LoadingState.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useLanguage } from "../context/LanguageContext.jsx";
 import { getApiErrorMessage } from "../services/api.js";

@@ -1,7 +1,7 @@
 import { Sigma } from "lucide-react";
 import { getChapter } from "../../data/chapters.js";
 import { unitDetails } from "../../data/bookPages.js";
-import FormulaBox from "../FormulaBox.jsx";
+import FormulaBox from "./FormulaBox.jsx";
 import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function UnitFormulaPage({ unit }) {

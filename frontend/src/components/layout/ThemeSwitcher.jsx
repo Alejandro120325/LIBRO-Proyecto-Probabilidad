@@ -1,8 +1,8 @@
 import { Check, ChevronDown, Palette, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext.jsx";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { useTheme } from "../../context/ThemeContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function ThemeSwitcher() {
   const { theme, setTheme, themes } = useTheme();

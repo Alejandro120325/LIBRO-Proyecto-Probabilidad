@@ -1,11 +1,11 @@
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, Clock3, Lightbulb, RotateCcw, Save, Star, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import Alert from "./Alert.jsx";
-import { getApiErrorMessage } from "../services/api.js";
-import { resultService } from "../services/resultService.js";
-import { formatTime } from "../utils/format.js";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import Alert from "../common/Alert.jsx";
+import { getApiErrorMessage } from "../../services/api.js";
+import { resultService } from "../../services/resultService.js";
+import { formatTime } from "../../utils/format.js";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function GameLayout({ unitId, game, children }) {
   const { t } = useLanguage();

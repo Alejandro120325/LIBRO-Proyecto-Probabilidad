@@ -1,6 +1,6 @@
 import { Clock3 } from "lucide-react";
-import { formatDate, formatTime } from "../utils/format.js";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { formatDate, formatTime } from "../../utils/format.js";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function ResultCard({ result, compact = false }) {
   const { t, translateText } = useLanguage();

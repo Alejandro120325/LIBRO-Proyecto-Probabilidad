@@ -1,5 +1,5 @@
 import { Inbox } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function EmptyState({ title, message, action, icon: Icon = Inbox }) {
   const { t } = useLanguage();

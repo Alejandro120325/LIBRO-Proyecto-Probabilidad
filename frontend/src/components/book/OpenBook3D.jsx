@@ -1,5 +1,5 @@
 import { bookPages } from "../../data/bookPages.js";
-import ReadAloudControls from "../ReadAloudControls.jsx";
+import ReadAloudControls from "../accessibility/ReadAloudControls.jsx";
 import BookPageRenderer from "./BookPageRenderer.jsx";
 import BookTabs from "./BookTabs.jsx";
 import PageFlipWrapper from "./PageFlipWrapper.jsx";

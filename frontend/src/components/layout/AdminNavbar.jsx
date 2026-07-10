@@ -1,7 +1,7 @@
 import { BookOpen, FileClock, Gauge, ListChecks, LogOut, ShieldCheck, Trophy, Users } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.jsx";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { useAuth } from "../../context/AuthContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 import HeaderPreferences from "./HeaderPreferences.jsx";
 
 const links = [

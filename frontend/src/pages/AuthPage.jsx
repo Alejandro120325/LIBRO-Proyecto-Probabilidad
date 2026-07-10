@@ -1,10 +1,10 @@
 import { ArrowLeft, ArrowRight, BookOpen, Eye, EyeOff, LockKeyhole, Mail, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
-import Alert from "../components/Alert.jsx";
-import AppFooter from "../components/AppFooter.jsx";
-import BookCover3D from "../components/BookCover3D.jsx";
-import HeaderPreferences from "../components/HeaderPreferences.jsx";
+import Alert from "../components/common/Alert.jsx";
+import AppFooter from "../components/layout/AppFooter.jsx";
+import BookCover3D from "../components/book/BookCover3D.jsx";
+import HeaderPreferences from "../components/layout/HeaderPreferences.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useLanguage } from "../context/LanguageContext.jsx";
 import { getApiErrorMessage } from "../services/api.js";

@@ -1,11 +1,11 @@
 import { BarChart3, BookOpen, CircleGauge, Medal, Target } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import EmptyState from "../components/EmptyState.jsx";
-import ErrorState from "../components/ErrorState.jsx";
-import LoadingState from "../components/LoadingState.jsx";
-import ProgressCard from "../components/ProgressCard.jsx";
-import ResultCard from "../components/ResultCard.jsx";
+import EmptyState from "../components/common/EmptyState.jsx";
+import ErrorState from "../components/common/ErrorState.jsx";
+import LoadingState from "../components/common/LoadingState.jsx";
+import ProgressCard from "../components/dashboard/ProgressCard.jsx";
+import ResultCard from "../components/dashboard/ResultCard.jsx";
 import { chapters } from "../data/chapters.js";
 import { useLanguage } from "../context/LanguageContext.jsx";
 import { getApiErrorMessage } from "../services/api.js";

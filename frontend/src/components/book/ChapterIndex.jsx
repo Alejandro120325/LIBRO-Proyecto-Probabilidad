@@ -1,5 +1,5 @@
 import { ArrowUpRight, BrainCircuit, ChartNoAxesCombined, CheckCircle2, Dices } from "lucide-react";
-import { chapters } from "../data/chapters.js";
+import { chapters } from "../../data/chapters.js";
 
 const icons = [BrainCircuit, ChartNoAxesCombined, Dices];
 

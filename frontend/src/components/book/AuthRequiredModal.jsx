@@ -1,6 +1,6 @@
 import { KeyRound, ScrollText, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function AuthRequiredModal({ open, onClose }) {
   const { t } = useLanguage();

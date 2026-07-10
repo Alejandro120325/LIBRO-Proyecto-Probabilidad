@@ -1,9 +1,9 @@
 import { Save, UserRound, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext.jsx";
-import { useLanguage } from "../context/LanguageContext.jsx";
-import { getApiErrorMessage } from "../services/api.js";
-import Alert from "./Alert.jsx";
+import { useAuth } from "../../context/AuthContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
+import { getApiErrorMessage } from "../../services/api.js";
+import Alert from "../common/Alert.jsx";
 
 const emptyProfile = {
   name: "",

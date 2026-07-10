@@ -6,7 +6,7 @@ Plataforma educativa full-stack con una interfaz editorial seria, libro 3D inter
 
 - Alejandro Ojeda
 - Juan Figueroa
-- Josué Vélez
+- Josue Vele
 
 ## Tecnologías
 

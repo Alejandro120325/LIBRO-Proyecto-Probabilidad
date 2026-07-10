@@ -1,5 +1,5 @@
 import { BarChart3, BookOpen } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function BookCover3D({ compact = false }) {
   const { t } = useLanguage();

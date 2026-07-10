@@ -1,6 +1,6 @@
 import { Moon, Sun } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext.jsx";
-import { useTheme } from "../context/ThemeContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
+import { useTheme } from "../../context/ThemeContext.jsx";
 
 export default function ColorModeToggle() {
   const { mode, toggleMode } = useTheme();

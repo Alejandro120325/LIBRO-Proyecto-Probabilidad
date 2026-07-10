@@ -1081,13 +1081,14 @@ body { font-size:1rem; line-height:1.55; }
 
 .book-font-controls {
   display:flex;
-  min-height:38px;
+  min-height:36px;
   align-items:center;
-  gap:.28rem;
-  border:1px solid rgb(var(--accent-rgb) / .16);
-  border-radius:.9rem;
-  padding:.28rem;
-  background:linear-gradient(145deg,rgb(var(--accent-rgb) / .075),color-mix(in srgb,var(--bg-main) 74%,transparent));
+  gap:.18rem;
+  border:1px solid rgb(var(--accent-rgb) / .18);
+  border-radius:.85rem;
+  padding:.22rem;
+  background:linear-gradient(145deg,rgb(var(--accent-rgb) / .08),color-mix(in srgb,var(--bg-main) 76%,transparent));
+  box-shadow:inset 0 1px 0 rgb(255 255 255 / .04);
 }
 
 .book-font-label {
@@ -1100,31 +1101,29 @@ body { font-size:1rem; line-height:1.55; }
   white-space:nowrap;
 }
 
-.book-font-controls button,
-.book-font-value {
+.book-font-controls button {
+  min-width:32px;
   min-height:30px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
   border:0;
-  border-radius:.6rem;
-  padding:.38rem .5rem;
+  border-radius:.58rem;
+  padding:.36rem .48rem;
   color:var(--text-main);
   background:transparent;
-  font-size:.64rem;
+  font-size:.66rem;
   font-weight:900;
   line-height:1;
   white-space:nowrap;
-}
-
-.book-font-controls button {
   cursor:pointer;
-  transition:background .2s ease,color .2s ease,opacity .2s ease;
+  transition:background .2s ease,color .2s ease,opacity .2s ease,transform .2s ease;
 }
 
 .book-font-controls button:hover:not(:disabled) {
   color:var(--accent-soft);
   background:rgb(var(--accent-rgb) / .12);
+  transform:translateY(-1px);
 }
 
 .book-font-controls button:disabled {
@@ -1132,15 +1131,11 @@ body { font-size:1rem; line-height:1.55; }
   cursor:not-allowed;
 }
 
-.book-font-value {
-  min-width:44px;
-  color:var(--accent-soft);
-  background:rgb(var(--accent-rgb) / .08);
-}
-
 .book-font-reset {
+  min-width:34px;
   color:var(--accent-contrast)!important;
   background:linear-gradient(135deg,var(--accent),var(--accent-soft))!important;
+  box-shadow:0 8px 18px rgb(var(--accent-rgb) / .18);
 }
 
 .book-side-tabs {
@@ -1354,11 +1349,6 @@ body { font-size:1rem; line-height:1.55; }
 
   .read-aloud-volume input[type="range"] {
     width:58px;
-  }
-
-  .book-font-value,
-  .book-font-reset {
-    display:none!important;
   }
 
   .book-side-tabs button,
@@ -1580,8 +1570,8 @@ body { font-size:1rem; line-height:1.55; }
 }
 
 .header-preferences .book-font-controls {
-  min-height:38px;
-  padding:.25rem;
+  min-height:36px;
+  padding:.22rem;
   border-radius:.85rem;
 }
 
@@ -1589,19 +1579,15 @@ body { font-size:1rem; line-height:1.55; }
   display:none;
 }
 
-.header-preferences .book-font-controls button,
-.header-preferences .book-font-value {
+.header-preferences .book-font-controls button {
   min-height:30px;
-  padding:.36rem .48rem;
-  font-size:.62rem;
-}
-
-.header-preferences .book-font-value {
-  min-width:42px;
+  min-width:32px;
+  padding:.34rem .46rem;
+  font-size:.64rem;
 }
 
 .header-preferences .book-font-reset {
-  min-width:48px;
+  min-width:34px;
 }
 
 @media (max-width:1280px) {
@@ -1684,15 +1670,11 @@ body { font-size:1rem; line-height:1.55; }
   }
 
   .header-preferences .book-font-controls {
-    max-width:132px;
-  }
-
-  .header-preferences .book-font-value {
-    display:none;
+    max-width:126px;
   }
 
   .header-preferences .book-font-reset {
-    min-width:42px;
+    min-width:34px;
   }
 
   .book-workspace .book-context-bar {

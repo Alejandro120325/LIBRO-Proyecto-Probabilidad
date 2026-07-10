@@ -1,6 +1,6 @@
 import { Save, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function UserEditModal({ user, busy, onSave, onClose }) {
   const { t } = useLanguage();

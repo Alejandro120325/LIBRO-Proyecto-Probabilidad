@@ -1,10 +1,10 @@
 import { Activity, ArrowRight, FileClock, Gamepad2, ListChecks, ShieldAlert, Sparkles, Trophy, UserCheck, Users } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AdminStatCard from "../../components/AdminStatCard.jsx";
-import EmptyState from "../../components/EmptyState.jsx";
-import ErrorState from "../../components/ErrorState.jsx";
-import LoadingState from "../../components/LoadingState.jsx";
+import AdminStatCard from "../../components/dashboard/AdminStatCard.jsx";
+import EmptyState from "../../components/common/EmptyState.jsx";
+import ErrorState from "../../components/common/ErrorState.jsx";
+import LoadingState from "../../components/common/LoadingState.jsx";
 import { getApiErrorMessage } from "../../services/api.js";
 import { adminService } from "../../services/adminService.js";
 import { formatDate } from "../../utils/format.js";

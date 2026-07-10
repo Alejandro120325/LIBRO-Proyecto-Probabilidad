@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import AppFooter from "../components/AppFooter.jsx";
-import AdminNavbar from "../components/AdminNavbar.jsx";
+import AppFooter from "../components/layout/AppFooter.jsx";
+import AdminNavbar from "../components/layout/AdminNavbar.jsx";
 
 export default function AdminLayout() {
   return (

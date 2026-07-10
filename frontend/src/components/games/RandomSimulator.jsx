@@ -1,6 +1,6 @@
 import { Dices, RotateCw } from "lucide-react";
 import { useState } from "react";
-import { useLanguage } from "../context/LanguageContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
 
 export default function RandomSimulator() {
   const { t } = useLanguage();

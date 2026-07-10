@@ -17,31 +17,32 @@ export default function BookFontSizeControls({
       <span className="book-font-label">{t("book.fontSize")}</span>
       <button
         type="button"
+        className="book-font-button"
         onClick={onDecrease}
         disabled={!canDecrease}
         aria-label={t("book.decreaseFontSize")}
         title={t("book.decreaseFontSize")}
       >
-        A-
-      </button>
-      <span className="book-font-value" aria-live="polite">{percentage}%</span>
-      <button
-        type="button"
-        onClick={onIncrease}
-        disabled={!canIncrease}
-        aria-label={t("book.increaseFontSize")}
-        title={t("book.increaseFontSize")}
-      >
-        A+
+        A−
       </button>
       <button
         type="button"
         className="book-font-reset"
         onClick={onReset}
         aria-label={t("book.resetFontSize")}
-        title={t("book.resetFontSize")}
+        title={`${t("book.resetFontSize")} · ${percentage}%`}
       >
-        100%
+        A
+      </button>
+      <button
+        type="button"
+        className="book-font-button"
+        onClick={onIncrease}
+        disabled={!canIncrease}
+        aria-label={t("book.increaseFontSize")}
+        title={t("book.increaseFontSize")}
+      >
+        A+
       </button>
     </section>
   );

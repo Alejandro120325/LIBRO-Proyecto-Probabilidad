@@ -11,7 +11,7 @@ export default function BookCoverPage() {
       <h1>{t("book.title")}</h1>
       <h2>{t("book.subtitle")}</h2>
       <div className="internal-divider"><span /></div>
-      <div className="book-authors"><strong><GraduationCap /> {t("book.authors")}</strong><span>Alejandro Ojeda</span><span>Juan Figueroa</span><span>Josué Vélez</span></div>
+      <div className="book-authors"><strong><GraduationCap /> {t("book.authors")}</strong><span>Alejandro Ojeda</span><span>Juan Figueroa</span><span>Josue Vele</span></div>
     </div>
   );
 }

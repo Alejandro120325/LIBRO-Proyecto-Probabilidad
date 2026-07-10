@@ -2,7 +2,7 @@ import { Component, useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import BookNavigation from "../components/book/BookNavigation.jsx";
 import OpenBook3D from "../components/book/OpenBook3D.jsx";
-import ErrorState from "../components/ErrorState.jsx";
+import ErrorState from "../components/common/ErrorState.jsx";
 import { bookIndexGroups, bookPages, getBookPageIndex, unitDetails } from "../data/bookPages.js";
 import { getChapter } from "../data/chapters.js";
 import { useBookAccessibility } from "../context/BookAccessibilityContext.jsx";
@@ -37,7 +37,7 @@ function getReadableBookPageText(page, { t, translateObject, translateText }) {
       t("book.title"),
       t("book.subtitle"),
       t("book.coverPeriod"),
-      `${t("book.authors")}: Alejandro Ojeda, Juan Figueroa, Josué Vélez`,
+      `${t("book.authors")}: Alejandro Ojeda, Juan Figueroa, Josue Vele`,
     ]);
   }
 

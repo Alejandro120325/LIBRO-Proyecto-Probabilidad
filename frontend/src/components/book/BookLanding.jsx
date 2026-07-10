@@ -1,12 +1,12 @@
 import { ArrowRight, BookOpen, LayoutDashboard, LogOut } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.jsx";
-import { useLanguage } from "../context/LanguageContext.jsx";
-import AppFooter from "./AppFooter.jsx";
+import { useAuth } from "../../context/AuthContext.jsx";
+import { useLanguage } from "../../context/LanguageContext.jsx";
+import AppFooter from "../layout/AppFooter.jsx";
 import AuthRequiredModal from "./AuthRequiredModal.jsx";
 import ClosedBook3D from "./ClosedBook3D.jsx";
-import HeaderPreferences from "./HeaderPreferences.jsx";
+import HeaderPreferences from "../layout/HeaderPreferences.jsx";
 import AcademicBackdrop from "./AcademicBackdrop.jsx";
 
 export default function BookLanding() {

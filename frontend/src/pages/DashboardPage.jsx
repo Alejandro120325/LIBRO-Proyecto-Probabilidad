@@ -1,11 +1,11 @@
 import { ArrowRight, BookOpen, BriefcaseBusiness, ChartNoAxesCombined, CircleGauge, Mail, MapPin, Medal, Pencil, Phone, Sparkles, Trophy, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Alert from "../components/Alert.jsx";
-import Loading from "../components/Loading.jsx";
-import ProgressCard from "../components/ProgressCard.jsx";
-import ProfileEditModal from "../components/ProfileEditModal.jsx";
-import ResultCard from "../components/ResultCard.jsx";
+import Alert from "../components/common/Alert.jsx";
+import Loading from "../components/common/Loading.jsx";
+import ProgressCard from "../components/dashboard/ProgressCard.jsx";
+import ProfileEditModal from "../components/profile/ProfileEditModal.jsx";
+import ResultCard from "../components/dashboard/ResultCard.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useLanguage } from "../context/LanguageContext.jsx";
 import { chapters } from "../data/chapters.js";

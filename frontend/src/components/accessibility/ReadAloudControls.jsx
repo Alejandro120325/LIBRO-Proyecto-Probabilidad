@@ -1,7 +1,7 @@
 import { Pause, Play, Square, Volume2 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useLanguage } from "../context/LanguageContext.jsx";
-import useTextToSpeech from "../hooks/useTextToSpeech.js";
+import { useLanguage } from "../../context/LanguageContext.jsx";
+import useTextToSpeech from "../../hooks/useTextToSpeech.js";
 
 const SPEED_OPTIONS = [0.75, 1, 1.25, 1.5];
 const CONTINUOUS_PAGE_DELAY = 650;
