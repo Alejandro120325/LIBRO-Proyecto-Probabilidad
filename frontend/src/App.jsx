@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import RoleRoute from "./components/RoleRoute.jsx";
 import ThemeSwitcher from "./components/ThemeSwitcher.jsx";
+import { BookAccessibilityProvider } from "./context/BookAccessibilityContext.jsx";
 import AdminLayout from "./layouts/AdminLayout.jsx";
 import AppLayout from "./layouts/AppLayout.jsx";
 import AuthPage from "./pages/AuthPage.jsx";
@@ -21,7 +22,7 @@ import AdminUsersPage from "./pages/admin/AdminUsersPage.jsx";
 
 export default function App() {
   return (
-    <>
+    <BookAccessibilityProvider>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<AuthPage mode="login" />} />
@@ -66,6 +67,6 @@ export default function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <ThemeSwitcher />
-    </>
+    </BookAccessibilityProvider>
   );
 }
