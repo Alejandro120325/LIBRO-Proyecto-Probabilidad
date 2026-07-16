@@ -96,6 +96,9 @@ Object.assign(translations.es, {
   "book.decreaseFontSize": "Disminuir letra",
   "book.increaseFontSize": "Aumentar letra",
   "book.resetFontSize": "Restablecer letra",
+  "book.openOnYouTube": "Abrir en YouTube",
+  "book.videoInstruction": "Mira el video y luego resuelve el ejercicio de la unidad.",
+  "book.videoReadInstruction": "Mira el video y luego continúa con el ejercicio.",
   "book.tab.cover": "Portada",
   "book.tab.index": "Índice",
   "book.tab.games": "Juegos",
@@ -130,6 +133,9 @@ Object.assign(translations.en, {
   "book.decreaseFontSize": "Decrease font size",
   "book.increaseFontSize": "Increase font size",
   "book.resetFontSize": "Reset font size",
+  "book.openOnYouTube": "Open on YouTube",
+  "book.videoInstruction": "Watch the video and then solve the unit exercise.",
+  "book.videoReadInstruction": "Watch the video and then continue with the exercise.",
   "book.tab.cover": "Cover",
   "book.tab.index": "Index",
   "book.tab.games": "Games",
@@ -221,4 +227,16 @@ Object.assign(contentTranslations, {
   "Al lanzar un dado justo, ¿cuál es P(X>4)?": "When rolling a fair die, what is P(X>4)?", "¿Cuál es el valor esperado de un dado justo?": "What is the expected value of a fair die?", "Se lanzan dos monedas. Si X es el número de caras, ¿cuánto vale P(X=1)?": "Two coins are tossed. If X is the number of heads, what is P(X=1)?", "¿Cuál de estas variables es continua?": "Which of these variables is continuous?", "Número de estudiantes": "Number of students", "Resultado de un dado": "Outcome of a die", "Cantidad de llamadas": "Number of calls", "Tiempo de espera": "Waiting time",
   "Para una variable Bernoulli con P(X=1)=0,5, ¿cuál es su varianza?": "For a Bernoulli variable with P(X=1)=0.5, what is its variance?", "¿Qué condición debe cumplir una función de probabilidad discreta?": "What condition must a discrete probability function satisfy?", "La suma debe ser 0": "The sum must be 0", "Cada probabilidad debe superar 1": "Each probability must exceed 1", "Todas las probabilidades suman 1": "All probabilities sum to 1", "El valor esperado debe ser entero": "The expected value must be an integer",
   "Los resultados favorables son 5 y 6: 2 de 6, es decir, 1/3.": "The favorable outcomes are 5 and 6: 2 out of 6, or 1/3.", "De CC, CS, SC y SS, dos resultados tienen exactamente una cara: 2/4=1/2.": "Of HH, HT, TH, and TT, two outcomes have exactly one head: 2/4=1/2.", "El tiempo puede tomar cualquier valor real dentro de un intervalo; las otras variables son contables.": "Time can take any real value within an interval; the other variables are countable.", "Cada probabilidad está entre 0 y 1 y la suma sobre todos los valores posibles debe ser exactamente 1.": "Each probability is between 0 and 1, and the sum over all possible values must equal exactly 1."
+});
+
+Object.assign(contentTranslations, {
+  "Regla de Bayes": "Bayes’ Rule",
+  "Media, mediana y moda": "Mean, median and mode",
+  "Variables aleatorias": "Random variables",
+  "Video explicativo: Regla de Bayes": "Explanatory video: Bayes’ Rule",
+  "Este video resume la idea principal de la Regla de Bayes y cómo se aplica en problemas de probabilidad condicional.": "This video summarizes the main idea behind Bayes’ Rule and how it is applied in conditional probability problems.",
+  "Video explicativo: Media, mediana y moda": "Explanatory video: Mean, median and mode",
+  "Este video explica de forma rápida cómo identificar y calcular las medidas básicas de tendencia central.": "This video quickly explains how to identify and calculate the basic measures of central tendency.",
+  "Video explicativo: Variables aleatorias": "Explanatory video: Random variables",
+  "Este video introduce el concepto de variable aleatoria y su relación con resultados posibles y probabilidades.": "This video introduces the concept of a random variable and its relationship with possible outcomes and probabilities."
 });

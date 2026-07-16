@@ -27,7 +27,7 @@ export const chapters = [
     },
     applications: ["Diagnósticos médicos", "Filtros de spam", "Predicción de riesgos"],
     summary: "Bayes combina una creencia previa con evidencia observable. El denominador debe incluir todas las formas en que la evidencia puede ocurrir.",
-    videoTitle: "Video: intuición detrás de Bayes",
+    videoTitle: "Video explicativo: Regla de Bayes",
   },
   {
     id: 2,
@@ -58,7 +58,7 @@ export const chapters = [
     },
     applications: ["Promedios académicos", "Ventas", "Encuestas", "Análisis deportivo"],
     summary: "Ordena los datos antes de buscar la mediana. Usa la mediana cuando valores extremos puedan distorsionar la media.",
-    videoTitle: "Video: medidas de tendencia central",
+    videoTitle: "Video explicativo: Media, mediana y moda",
   },
   {
     id: 3,
@@ -94,7 +94,7 @@ export const chapters = [
     },
     applications: ["Seguros y riesgo", "Control de calidad", "Finanzas", "Pronósticos"],
     summary: "La distribución conecta cada valor con su probabilidad. La esperanza mide el centro teórico y la varianza, su dispersión.",
-    videoTitle: "Video: de experimentos a distribuciones",
+    videoTitle: "Video explicativo: Variables aleatorias",
   },
 ];
 

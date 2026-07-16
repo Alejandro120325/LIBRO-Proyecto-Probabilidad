@@ -99,13 +99,12 @@ function getReadableBookPageText(page, { t, translateObject, translateText }) {
     }
 
     if (page.type === "unit-video") {
+      const video = unitDetails[page.unit]?.video || {};
       return joinReadableParts([
         unitHeading,
-        t("book.video"),
-        translateText(chapter.videoTitle),
-        translateText(unitDetails[page.unit]?.videoPlaceholder),
-        t("book.videoSpace"),
-        t("book.videoNote"),
+        translateText(video.title || chapter.videoTitle),
+        translateText(video.description || unitDetails[page.unit]?.videoPlaceholder),
+        t("book.videoReadInstruction"),
       ]);
     }
 
