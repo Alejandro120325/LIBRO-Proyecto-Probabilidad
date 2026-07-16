@@ -5,6 +5,7 @@ import ThemeSwitcher from "./components/layout/ThemeSwitcher.jsx";
 import { BookAccessibilityProvider } from "./context/BookAccessibilityContext.jsx";
 import AdminLayout from "./layouts/AdminLayout.jsx";
 import AppLayout from "./layouts/AppLayout.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
 import AuthPage from "./pages/AuthPage.jsx";
 import BookPage from "./pages/BookPage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
@@ -25,6 +26,7 @@ export default function App() {
     <BookAccessibilityProvider>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/register" element={<AuthPage mode="register" />} />
 

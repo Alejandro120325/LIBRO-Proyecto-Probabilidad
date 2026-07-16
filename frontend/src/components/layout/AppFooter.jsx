@@ -1,4 +1,5 @@
-import { BookMarked, GraduationCap, Mail, MapPin, Phone, Users } from "lucide-react";
+import { BookMarked, GraduationCap, Info, Mail, MapPin, Phone, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext.jsx";
 import SocialLinks from "../common/SocialLinks.jsx";
 
@@ -39,7 +40,11 @@ export default function AppFooter() {
           </address>
         </section>
       </div>
-      <div className="footer-bottom"><span>{t("footer.projectLine")}</span><SocialLinks /></div>
+      <div className="footer-bottom">
+        <span>{t("footer.projectLine")}</span>
+        <Link to="/about" className="footer-about-link"><Info />{t("about.nav")}</Link>
+        <SocialLinks />
+      </div>
     </footer>
   );
 }
